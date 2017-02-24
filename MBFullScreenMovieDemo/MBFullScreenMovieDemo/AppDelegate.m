@@ -36,7 +36,7 @@
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    
+    self.mb.loopCount = 2;
     return YES;
 }
 

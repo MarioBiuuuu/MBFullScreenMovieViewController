@@ -43,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.transmitAnimation = YES;
+    
     self.enterBtnTintColor = DEF_HEXColor(0x44EAAF);
     
     self.enterBtnTitleFont = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
@@ -193,6 +195,8 @@
             [self.playerViewController.player seekToTime:CMTimeMake(0, 1)];
             
             [self.playerViewController.player play];
+        } else {
+            [self enterRootViewController:nil];
         }
     }
 }
@@ -210,6 +214,7 @@
     if (loopCount > 0) {
         self.reaptCount = 0;
         self.reaptCount += loopCount;
+        self.reaptCount -= 1;
     }
 }
 
@@ -244,6 +249,8 @@
 }
 
 - (void)enterRootViewController:(UIButton *)btn {
+    
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(mb_movieViewController:enterBtnClick:)]) {
         [self.delegate mb_movieViewController:self enterBtnClick:nil];
         
@@ -252,7 +259,30 @@
             self.enterBtnClickBlock(btn);
         }
     }
+    
+    [self transmitAnimationFunc];
+}
 
+- (void)transmitAnimationFunc {
+    
+    if (self.transmitAnimation) {
+        UIViewController *rootViewController = [[UIApplication sharedApplication].delegate window].rootViewController;
+        [rootViewController.view addSubview:self.view];
+        rootViewController.view.alpha = 0.5;
+        [UIView animateWithDuration:1.0 animations:^{
+            self.view.alpha = 0.0;
+            
+            [UIView animateWithDuration:1.0 animations:^{
+                rootViewController.view.alpha = 1;
+            }];
+            
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self.view removeFromSuperview];
+            }
+        }];
+    }
+    
 }
 
 @end

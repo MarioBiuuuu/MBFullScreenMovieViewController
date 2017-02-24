@@ -68,6 +68,11 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 @property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
 
 /**
+ *  是否开启过渡动画
+ */
+@property (nonatomic, assign) BOOL transmitAnimation;
+
+/**
  播放结束回调
 
  @param block block
