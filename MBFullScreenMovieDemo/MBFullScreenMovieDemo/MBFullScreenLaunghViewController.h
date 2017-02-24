@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBMoviePlayerViewController.h"
 
-@class MBFullScreenMovieViewController;
+@class MBFullScreenLaunghViewController;
 
-typedef void(^mb_moviePlayComplateBlock)(NSTimeInterval totalInterval);
+typedef NS_ENUM(NSInteger, MBFullScreenLaunghStyle) {
+    MBFullScreenLaunghStyleNormal = 0,
+    MBFullScreenLaunghStyleMovie = 1 << 0,
+    MBFullScreenLaunghStyleImage = 2 << 1,
+    MBFullScreenLaunghStyleGif = 3 << 2
+};
+
+typedef void(^mb_moviePlayComplateBlock)(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval);
 typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 
 @protocol MBFullScreenMovieViewControllerDelegate <NSObject>
@@ -21,9 +29,10 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  播放结束回调
 
  @param viewController 当前对象
+ @param playerViewController 视频播放
  @param totalInterval 视频时长
  */
-- (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController playComplate:(NSTimeInterval)totalInterval;
+- (void)mb_movieViewController:(MBFullScreenLaunghViewController *)viewController mbPlayerViewController:(MBMoviePlayerViewController *)playerViewController playComplate:(NSTimeInterval)totalInterval;
 
 /**
  点击默认的进入按钮
@@ -31,11 +40,11 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  @param viewController 当前对象
  @param enterBtn 进入按钮
  */
-- (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController enterBtnClick:(UIButton *)enterBtn;
+- (void)mb_movieViewController:(MBFullScreenLaunghViewController *)viewController enterBtnClick:(UIButton *)enterBtn;
 
 @end
 
-@interface MBFullScreenMovieViewController : UIViewController
+@interface MBFullScreenLaunghViewController : UIViewController
 
 /**
  *  视频路径(本地/网络)
@@ -68,6 +77,11 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 @property (nonatomic, assign) BOOL transmitAnimation;
 
 /**
+ *  Laungh 类型
+ */
+@property (nonatomic, assign) MBFullScreenLaunghStyle launghStyle;
+
+/**
  *  代理对象
  */
 @property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
@@ -85,4 +99,15 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  @param block block
  */
 - (void)mb_moviePlayEnterBtnClick:(mb_moviePlayEnterBtnClickBlock)block;
+
+
+/**
+ 构造方法
+
+ @param style 类型
+ @return 实例对象
+ */
+- (instancetype)initWithLaunghStyle:(MBFullScreenLaunghStyle)style;
++ (instancetype)mb_fullScreenLaugh:(MBFullScreenLaunghStyle)style;
+
 @end

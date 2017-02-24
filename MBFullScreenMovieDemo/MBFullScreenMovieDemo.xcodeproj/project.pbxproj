@@ -13,9 +13,10 @@
 		89EFD1131E5FCEF900607373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1111E5FCEF900607373 /* Main.storyboard */; };
 		89EFD1151E5FCEF900607373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1141E5FCEF900607373 /* Assets.xcassets */; };
 		89EFD1181E5FCEF900607373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1161E5FCEF900607373 /* LaunchScreen.storyboard */; };
-		89EFD1211E5FCF2000607373 /* MBFullScreenMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1201E5FCF2000607373 /* MBFullScreenMovieViewController.m */; };
+		89EFD1211E5FCF2000607373 /* MBFullScreenLaunghViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */; };
 		89EFD1231E5FD47B00607373 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1221E5FD47B00607373 /* video.mp4 */; };
 		89EFD1251E60026400607373 /* 1111.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1241E60026400607373 /* 1111.jpeg */; };
+		89EFD1281E60315E00607373 /* MBMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,10 +30,12 @@
 		89EFD1141E5FCEF900607373 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89EFD1171E5FCEF900607373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89EFD1191E5FCEF900607373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89EFD11F1E5FCF2000607373 /* MBFullScreenMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFullScreenMovieViewController.h; sourceTree = "<group>"; };
-		89EFD1201E5FCF2000607373 /* MBFullScreenMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFullScreenMovieViewController.m; sourceTree = "<group>"; };
+		89EFD11F1E5FCF2000607373 /* MBFullScreenLaunghViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFullScreenLaunghViewController.h; sourceTree = "<group>"; };
+		89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFullScreenLaunghViewController.m; sourceTree = "<group>"; };
 		89EFD1221E5FD47B00607373 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		89EFD1241E60026400607373 /* 1111.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1111.jpeg; sourceTree = "<group>"; };
+		89EFD1261E60315E00607373 /* MBMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBMoviePlayerViewController.h; sourceTree = "<group>"; };
+		89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBMoviePlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +71,10 @@
 				89EFD1221E5FD47B00607373 /* video.mp4 */,
 				89EFD10B1E5FCEF900607373 /* AppDelegate.h */,
 				89EFD10C1E5FCEF900607373 /* AppDelegate.m */,
-				89EFD11F1E5FCF2000607373 /* MBFullScreenMovieViewController.h */,
-				89EFD1201E5FCF2000607373 /* MBFullScreenMovieViewController.m */,
+				89EFD11F1E5FCF2000607373 /* MBFullScreenLaunghViewController.h */,
+				89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */,
+				89EFD1261E60315E00607373 /* MBMoviePlayerViewController.h */,
+				89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */,
 				89EFD10E1E5FCEF900607373 /* ViewController.h */,
 				89EFD10F1E5FCEF900607373 /* ViewController.m */,
 				89EFD1111E5FCEF900607373 /* Main.storyboard */,
@@ -167,7 +172,8 @@
 				89EFD1101E5FCEF900607373 /* ViewController.m in Sources */,
 				89EFD10D1E5FCEF900607373 /* AppDelegate.m in Sources */,
 				89EFD10A1E5FCEF900607373 /* main.m in Sources */,
-				89EFD1211E5FCF2000607373 /* MBFullScreenMovieViewController.m in Sources */,
+				89EFD1281E60315E00607373 /* MBMoviePlayerViewController.m in Sources */,
+				89EFD1211E5FCF2000607373 /* MBFullScreenLaunghViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

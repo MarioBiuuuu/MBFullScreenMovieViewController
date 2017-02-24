@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "MBFullScreenMovieViewController.h"
+#import "MBFullScreenLaunghViewController.h"
 #import "ViewController.h"
 
 @interface AppDelegate () <MBFullScreenMovieViewControllerDelegate>
-@property (nonatomic, strong) MBFullScreenMovieViewController *mb;
+@property (nonatomic, strong) MBFullScreenLaunghViewController *mb;
 @end
 
 @implementation AppDelegate
@@ -19,32 +19,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.mb = [[MBFullScreenMovieViewController alloc] init];
+    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
     self.mb.delegate = self;
-
+    
     self.window.rootViewController = self.mb;
-    [self.mb mb_moviePlayComplate:^(NSTimeInterval totalInterval) {
+    [self.mb mb_moviePlayComplate:^(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval) {
         NSLog(@"block ---> complaet : %@", @(totalInterval));
     }];
     
     [self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
         NSLog(@"block ---> enter : %@", enterBtn);
     }];
-    
+    self.mb.loopCount = 2;
+
     self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
     
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    self.mb.loopCount = 2;
     return YES;
 }
 
-- (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController playComplate:(NSTimeInterval)totalInterval {
+- (void)mb_movieViewController:(MBFullScreenLaunghViewController *)viewController playComplate:(NSTimeInterval)totalInterval {
     NSLog(@"delegate ---> complaet : %@", @(totalInterval));
 }
 
-- (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController enterBtnClick:(UIButton *)enterBtn {
+- (void)mb_movieViewController:(MBFullScreenLaunghViewController *)viewController enterBtnClick:(UIButton *)enterBtn {
     NSLog(@"delegate ---> enter : %@", enterBtn);
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
