@@ -15,8 +15,22 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 
 @protocol MBFullScreenMovieViewControllerDelegate <NSObject>
 
+@optional
+
+/**
+ 播放结束回调
+
+ @param viewController 当前对象
+ @param totalInterval 视频时长
+ */
 - (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController playComplate:(NSTimeInterval)totalInterval;
 
+/**
+ 点击默认的进入按钮
+
+ @param viewController 当前对象
+ @param enterBtn 进入按钮
+ */
 - (void)mb_movieViewController:(MBFullScreenMovieViewController *)viewController enterBtnClick:(UIButton *)enterBtn;
 
 @end
@@ -48,9 +62,22 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  */
 @property (nonatomic, strong) UIColor *enterBtnTintColor;
 
+/**
+ *  代理对象
+ */
 @property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
 
+/**
+ 播放结束回调
+
+ @param block block
+ */
 - (void)mb_moviePlayComplate:(mb_moviePlayComplateBlock)block;
 
+/**
+ 进入按钮点击
+
+ @param block block
+ */
 - (void)mb_moviePlayEnterBtnClick:(mb_moviePlayEnterBtnClickBlock)block;
 @end
