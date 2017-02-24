@@ -43,8 +43,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.enterBtnTintColor = DEF_HEXColor(0x44EAAF);
+    
+    self.enterBtnTitleFont = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self.view addSubview:self.playerViewController.view];
+    
+    [self.view addSubview:self.enterBtn];
+    
+    [self enterBtnAnimation];
+}
+
+- (void)enterBtnAnimation {
+    self.enterBtn.alpha = 0;
+    [UIView animateWithDuration:2.0 animations:^{
+        self.enterBtn.alpha = 1;
+    }];
 }
 
 - (UIButton *)enterBtn {
@@ -53,12 +69,12 @@
         _enterBtn.backgroundColor = [UIColor clearColor];
         _enterBtn.frame = CGRectMake(0.5 * (self.view.frame.size.width - self.view.frame.size.height / 4.0), self.view.frame.size.height - 90, self.view.frame.size.height / 4.0, 50.f);
         
-        _enterBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
+        _enterBtn.titleLabel.font = self.enterBtnTitleFont;
         [_enterBtn setTitle:@"进入" forState:UIControlStateNormal];
-        [_enterBtn setTitleColor:DEF_HEXColor(0x44EAAF) forState:UIControlStateNormal];
+        [_enterBtn setTitleColor:self.enterBtnTintColor forState:UIControlStateNormal];
         
-        _enterBtn.layer.borderColor = DEF_HEXColor(0x44EAAF).CGColor;
-        _enterBtn.layer.borderWidth = 1;
+        _enterBtn.layer.borderColor = self.enterBtnTintColor.CGColor;
+        _enterBtn.layer.borderWidth = 2;
         _enterBtn.layer.masksToBounds = YES;
         _enterBtn.layer.cornerRadius = CGRectGetHeight(_enterBtn.frame) / 2.0;
         
@@ -209,10 +225,22 @@
 
 - (void)setVideoUrl:(NSURL *)videoUrl {
     _videoUrl = videoUrl;
+
+}
+
+- (void)setEnterBtnTintColor:(UIColor *)enterBtnTintColor {
+    _enterBtnTintColor = enterBtnTintColor;
     
-    [self.view addSubview:self.playerViewController.view];
+    [self.enterBtn setTitleColor:self.enterBtnTintColor forState:UIControlStateNormal];
     
-    [self.view addSubview:self.enterBtn];
+    self.enterBtn.layer.borderColor = self.enterBtnTintColor.CGColor;
+}
+
+- (void)setEnterBtnTitleFont:(UIFont *)enterBtnTitleFont {
+    _enterBtnTitleFont = enterBtnTitleFont;
+    
+    [self.enterBtn setTitleColor:self.enterBtnTintColor forState:UIControlStateNormal];
+
 }
 
 - (void)enterRootViewController:(UIButton *)btn {

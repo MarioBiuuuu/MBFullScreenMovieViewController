@@ -33,7 +33,20 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  */
 @property (nonatomic, assign) NSUInteger loopCount;
 
+/**
+ *  用户自定义视图(浮动)
+ */
 @property (nonatomic, strong) UIViewController *frontViewController;
+
+/**
+ *  默认进人按钮的文本
+ */
+@property (nonatomic, strong) UIFont *enterBtnTitleFont;
+
+/**
+ *  默认进入按钮的高亮色
+ */
+@property (nonatomic, strong) UIColor *enterBtnTintColor;
 
 @property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
 

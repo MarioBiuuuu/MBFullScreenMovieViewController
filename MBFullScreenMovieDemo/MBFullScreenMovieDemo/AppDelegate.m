@@ -20,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.mb = [[MBFullScreenMovieViewController alloc] init];
-    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
+    self.mb.delegate = self;
+
     self.window.rootViewController = self.mb;
     [self.mb mb_moviePlayComplate:^(NSTimeInterval totalInterval) {
         NSLog(@"block ---> complaet : %@", @(totalInterval));
@@ -29,7 +30,8 @@
     [self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
         NSLog(@"block ---> enter : %@", enterBtn);
     }];
-    self.mb.delegate = self;
+    
+    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
     
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
