@@ -63,14 +63,14 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 @property (nonatomic, strong) UIColor *enterBtnTintColor;
 
 /**
- *  代理对象
- */
-@property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
-
-/**
  *  是否开启过渡动画
  */
 @property (nonatomic, assign) BOOL transmitAnimation;
+
+/**
+ *  代理对象
+ */
+@property (nonatomic, weak) id<MBFullScreenMovieViewControllerDelegate> delegate;
 
 /**
  播放结束回调

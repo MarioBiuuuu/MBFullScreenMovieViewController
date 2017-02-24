@@ -229,7 +229,6 @@
 
 - (void)setVideoUrl:(NSURL *)videoUrl {
     _videoUrl = videoUrl;
-
 }
 
 - (void)setEnterBtnTintColor:(UIColor *)enterBtnTintColor {
