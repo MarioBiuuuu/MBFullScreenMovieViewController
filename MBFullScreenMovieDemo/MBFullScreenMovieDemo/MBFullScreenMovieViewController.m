@@ -181,7 +181,6 @@
             self.moviePlayComplate(total);
         }
     }
-    
 }
 
 - (void)reaptPlay {
