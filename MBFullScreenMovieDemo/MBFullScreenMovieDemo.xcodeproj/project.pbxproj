@@ -14,7 +14,7 @@
 		89EFD1151E5FCEF900607373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1141E5FCEF900607373 /* Assets.xcassets */; };
 		89EFD1181E5FCEF900607373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1161E5FCEF900607373 /* LaunchScreen.storyboard */; };
 		89EFD1211E5FCF2000607373 /* MBFullScreenMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1201E5FCF2000607373 /* MBFullScreenMovieViewController.m */; };
-		89EFD1231E5FD47B00607373 /* qidong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1221E5FD47B00607373 /* qidong.mp4 */; };
+		89EFD1231E5FD47B00607373 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1221E5FD47B00607373 /* video.mp4 */; };
 		89EFD1251E60026400607373 /* 1111.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1241E60026400607373 /* 1111.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		89EFD1191E5FCEF900607373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89EFD11F1E5FCF2000607373 /* MBFullScreenMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFullScreenMovieViewController.h; sourceTree = "<group>"; };
 		89EFD1201E5FCF2000607373 /* MBFullScreenMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFullScreenMovieViewController.m; sourceTree = "<group>"; };
-		89EFD1221E5FD47B00607373 /* qidong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = qidong.mp4; sourceTree = "<group>"; };
+		89EFD1221E5FD47B00607373 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		89EFD1241E60026400607373 /* 1111.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1111.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,7 @@
 		89EFD1071E5FCEF900607373 /* MBFullScreenMovieDemo */ = {
 			isa = PBXGroup;
 			children = (
-				89EFD1221E5FD47B00607373 /* qidong.mp4 */,
+				89EFD1221E5FD47B00607373 /* video.mp4 */,
 				89EFD10B1E5FCEF900607373 /* AppDelegate.h */,
 				89EFD10C1E5FCEF900607373 /* AppDelegate.m */,
 				89EFD11F1E5FCF2000607373 /* MBFullScreenMovieViewController.h */,
@@ -153,7 +153,7 @@
 				89EFD1251E60026400607373 /* 1111.jpeg in Resources */,
 				89EFD1151E5FCEF900607373 /* Assets.xcassets in Resources */,
 				89EFD1131E5FCEF900607373 /* Main.storyboard in Resources */,
-				89EFD1231E5FD47B00607373 /* qidong.mp4 in Resources */,
+				89EFD1231E5FD47B00607373 /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

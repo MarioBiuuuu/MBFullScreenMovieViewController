@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.mb = [[MBFullScreenMovieViewController alloc] init];
-    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"qidong"ofType:@"mp4"]];
+    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
     self.window.rootViewController = self.mb;
     [self.mb mb_moviePlayComplate:^(NSTimeInterval totalInterval) {
         NSLog(@"block ---> complaet : %@", @(totalInterval));
