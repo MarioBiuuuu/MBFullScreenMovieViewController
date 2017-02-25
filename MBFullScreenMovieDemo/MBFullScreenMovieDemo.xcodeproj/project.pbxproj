@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8975831A1E61DD990000CB10 /* MBImagesLaunghViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */; };
+		8975831D1E61DF740000CB10 /* MBImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8975831C1E61DF740000CB10 /* MBImageObject.m */; };
+		897583231E61F0840000CB10 /* MBCustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 897583221E61F0840000CB10 /* MBCustomProgressView.m */; };
 		89EFD10A1E5FCEF900607373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1091E5FCEF900607373 /* main.m */; };
 		89EFD10D1E5FCEF900607373 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD10C1E5FCEF900607373 /* AppDelegate.m */; };
 		89EFD1101E5FCEF900607373 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD10F1E5FCEF900607373 /* ViewController.m */; };
@@ -20,6 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		897583181E61DD990000CB10 /* MBImagesLaunghViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBImagesLaunghViewController.h; sourceTree = "<group>"; };
+		897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBImagesLaunghViewController.m; sourceTree = "<group>"; };
+		8975831B1E61DF740000CB10 /* MBImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBImageObject.h; sourceTree = "<group>"; };
+		8975831C1E61DF740000CB10 /* MBImageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBImageObject.m; sourceTree = "<group>"; };
+		897583211E61F0840000CB10 /* MBCustomProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCustomProgressView.h; sourceTree = "<group>"; };
+		897583221E61F0840000CB10 /* MBCustomProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCustomProgressView.m; sourceTree = "<group>"; };
 		89EFD1051E5FCEF900607373 /* MBFullScreenMovieDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBFullScreenMovieDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EFD1091E5FCEF900607373 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		89EFD10B1E5FCEF900607373 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +84,12 @@
 				89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */,
 				89EFD1261E60315E00607373 /* MBMoviePlayerViewController.h */,
 				89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */,
+				897583181E61DD990000CB10 /* MBImagesLaunghViewController.h */,
+				897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */,
+				8975831B1E61DF740000CB10 /* MBImageObject.h */,
+				8975831C1E61DF740000CB10 /* MBImageObject.m */,
+				897583211E61F0840000CB10 /* MBCustomProgressView.h */,
+				897583221E61F0840000CB10 /* MBCustomProgressView.m */,
 				89EFD10E1E5FCEF900607373 /* ViewController.h */,
 				89EFD10F1E5FCEF900607373 /* ViewController.m */,
 				89EFD1111E5FCEF900607373 /* Main.storyboard */,
@@ -169,9 +184,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8975831A1E61DD990000CB10 /* MBImagesLaunghViewController.m in Sources */,
 				89EFD1101E5FCEF900607373 /* ViewController.m in Sources */,
+				897583231E61F0840000CB10 /* MBCustomProgressView.m in Sources */,
 				89EFD10D1E5FCEF900607373 /* AppDelegate.m in Sources */,
 				89EFD10A1E5FCEF900607373 /* main.m in Sources */,
+				8975831D1E61DF740000CB10 /* MBImageObject.m in Sources */,
 				89EFD1281E60315E00607373 /* MBMoviePlayerViewController.m in Sources */,
 				89EFD1211E5FCF2000607373 /* MBFullScreenLaunghViewController.m in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 #import <AVKit/AVKit.h>
 
-@class MBMoviePlayerViewController;
+@class MBMoviePlayerViewController, MBImageObject;
 @protocol MBMoviePlayerViewControllerDelegate <NSObject>
 - (void)mb_movieViewController:(MBMoviePlayerViewController *)playerViewController playComplate:(NSTimeInterval)totalInterval;
 - (void)mb_movieViewControllerLoopEnd:(MBMoviePlayerViewController *)playerViewController;

@@ -7,16 +7,25 @@
 //
 
 #import "MBFullScreenLaunghViewController.h"
+#import "MBCustomProgressView.h"
 
 #define DEF_RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define DEF_HEXColor(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define DEF_HEXColorA(rgbValue, a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface MBFullScreenLaunghViewController () <MBMoviePlayerViewControllerDelegate>
+@interface MBFullScreenLaunghViewController () <MBMoviePlayerViewControllerDelegate> {
+    CGFloat _cardinalNumber; // 倒计时基数
+}
+
+@property (nonatomic, strong) MBImagesLaunghViewController *imageLaunghViewController;
 
 @property (nonatomic, strong) MBMoviePlayerViewController *playerViewController;
 
 @property (nonatomic, strong) UIButton *enterBtn;
+
+@property (nonatomic, strong) UIView *timeView;
+
+@property (nonatomic, strong) MBCustomProgressView *pieView;
 
 @property (nonatomic,copy) mb_moviePlayComplateBlock moviePlayComplate;
 
@@ -28,7 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (instancetype)initWithLaunghStyle:(MBFullScreenLaunghStyle)style {
@@ -53,6 +63,7 @@
             [self setupMoviePlayerView];
             break;
         case MBFullScreenLaunghStyleImage:
+            [self setupImagesLaunghView];
             break;
         case MBFullScreenLaunghStyleGif:
             break;
@@ -64,12 +75,15 @@
    
 }
 
+- (void)setupImagesLaunghView {
+    [self.view addSubview:self.imageLaunghViewController.view];
+    [self.view addSubview:self.timeView];
+}
+
 - (void)setupMoviePlayerView {
     self.enterBtnTintColor = DEF_HEXColor(0x44EAAF);
     
     self.enterBtnTitleFont = [UIFont fontWithName:@"Helvetica-Bold" size:16.f];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.playerViewController.view];
     
@@ -83,6 +97,14 @@
     [UIView animateWithDuration:2.0 animations:^{
         self.enterBtn.alpha = 1;
     }];
+}
+
+- (MBImagesLaunghViewController *)imageLaunghViewController {
+    if (!_imageLaunghViewController) {
+        _imageLaunghViewController = [[MBImagesLaunghViewController alloc] init];
+        _imageLaunghViewController.view.frame = self.view.frame;
+    }
+    return _imageLaunghViewController;
 }
 
 - (UIButton *)enterBtn {
@@ -104,6 +126,24 @@
 
     }
     return _enterBtn;
+}
+
+- (UIView *)timeView {
+    if (!_timeView) {
+        _timeView = [[UIView alloc] init];
+        _timeView.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 40 - 20, 30, 40, 40);
+        _timeView.backgroundColor = [UIColor clearColor];
+        [_timeView addSubview:self.pieView];
+    }
+    return _timeView;
+}
+
+- (MBCustomProgressView *)pieView {
+    if (!_pieView) {
+        _pieView = [[MBCustomProgressView alloc] initWithFrame:CGRectMake(0, 0, self.timeView.frame.size.width, self.timeView.frame.size.height)];
+        
+    }
+    return _pieView;
 }
 
 - (MBMoviePlayerViewController *)playerViewController {
@@ -134,6 +174,13 @@
     }
 }
 
+- (void)setImageArray:(NSArray<MBImageObject *> *)imageArray {
+    _imageArray = imageArray;
+    NSAssert(imageArray && imageArray.count > 0, @"传入的视频连接为空");
+
+    self.imageLaunghViewController.imageArray = imageArray;
+}
+
 - (void)setVideoUrl:(NSURL *)videoUrl {
     _videoUrl = videoUrl;
     self.playerViewController.videoUrl = videoUrl;
@@ -157,6 +204,56 @@
     
     [self.enterBtn setTitleColor:self.enterBtnTintColor forState:UIControlStateNormal];
 
+}
+
+- (void)setCountDownTime:(NSUInteger)countDownTime {
+    _countDownTime = countDownTime;
+    _cardinalNumber = 100.0 / countDownTime;
+    self.pieView.totalTime = countDownTime;
+    [self countDownWithTime:countDownTime countDownBlock:nil endBlock:nil];
+}
+
+- (void)countDownWithTime:(NSUInteger)time
+           countDownBlock:(void (^)(NSUInteger timeLeft))countDownBlock
+                 endBlock:(void (^)())endBlock {
+    
+    __weak typeof(self)weakSelf = self;
+    __block NSUInteger timeout = time; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout <= 0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (endBlock) {
+                    endBlock();
+                }
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                timeout--;
+                weakSelf.pieView.totalTime = timeout;
+                [weakSelf changeProgress:_cardinalNumber];
+                if (countDownBlock) {
+                    countDownBlock(timeout);
+                }
+            });
+        }
+    });
+    dispatch_resume(_timer);
+}
+
+- (void)changeProgress:(NSUInteger)step {
+    
+    self.pieView.progress += step;
+    if (self.pieView.progress >= 100) {
+        self.pieView.progress = 100;
+    } else if (self.pieView.progress < 0) {
+        self.pieView.progress = 0;
+    }
+//    self.pieView.text = [NSString stringWithFormat:@"%@", @(self.progressView.progress)];
+    [self.pieView setProgress:self.pieView.progress animated:YES duration:0.5];
 }
 
 - (void)enterRootViewController:(UIButton *)btn {

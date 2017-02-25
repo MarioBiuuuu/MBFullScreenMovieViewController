@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MBMoviePlayerViewController.h"
+#import "MBImagesLaunghViewController.h"
 
-@class MBFullScreenLaunghViewController;
+@class MBFullScreenLaunghViewController, MBImageObject;
 
 typedef NS_ENUM(NSInteger, MBFullScreenLaunghStyle) {
     MBFullScreenLaunghStyleNormal = 0,
@@ -45,6 +46,16 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 @end
 
 @interface MBFullScreenLaunghViewController : UIViewController
+
+/**
+ *  图片模型数组
+ */
+@property (nonatomic, strong) NSArray<MBImageObject *> *imageArray;
+
+/**
+ *  图片展示时间
+ */
+@property (nonatomic, assign) NSUInteger countDownTime;
 
 /**
  *  视频路径(本地/网络)

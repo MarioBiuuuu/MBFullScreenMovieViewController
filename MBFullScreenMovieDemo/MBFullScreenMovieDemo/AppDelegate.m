@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MBFullScreenLaunghViewController.h"
+#import "MBImageObject.h"
 #import "ViewController.h"
 
 @interface AppDelegate () <MBFullScreenMovieViewControllerDelegate>
@@ -19,21 +20,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
-    self.mb.delegate = self;
+    
+    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleImage];
+    
+    MBImageObject *obj = [[MBImageObject alloc] init];
+    obj.localImage = [UIImage imageNamed:@"1111.jpeg"];
+    
+    self.mb.imageArray = @[obj];
+    
+    self.mb.countDownTime = 10;
+    
+//    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
+//    self.mb.delegate = self;
+//    
+//    [self.mb mb_moviePlayComplate:^(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval) {
+//        NSLog(@"block ---> complaet : %@", @(totalInterval));
+//    }];
+//    
+//    [self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
+//        NSLog(@"block ---> enter : %@", enterBtn);
+//    }];
+//    self.mb.loopCount = 2;
+//
+//    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
     
     self.window.rootViewController = self.mb;
-    [self.mb mb_moviePlayComplate:^(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval) {
-        NSLog(@"block ---> complaet : %@", @(totalInterval));
-    }];
-    
-    [self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
-        NSLog(@"block ---> enter : %@", enterBtn);
-    }];
-    self.mb.loopCount = 2;
 
-    self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
-    
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
