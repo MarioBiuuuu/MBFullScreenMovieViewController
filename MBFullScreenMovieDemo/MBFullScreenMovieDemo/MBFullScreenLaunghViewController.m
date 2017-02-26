@@ -8,6 +8,7 @@
 
 #import "MBFullScreenLaunghViewController.h"
 #import "MBCustomProgressView.h"
+#import "MBImageObject.h"
 
 #define DEF_RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define DEF_HEXColor(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -15,6 +16,7 @@
 
 @interface MBFullScreenLaunghViewController () <MBMoviePlayerViewControllerDelegate> {
     CGFloat _cardinalNumber; // 倒计时基数
+    dispatch_source_t _timer; // 倒计时
 }
 
 @property (nonatomic, strong) MBImagesLaunghViewController *imageLaunghViewController;
@@ -27,14 +29,18 @@
 
 @property (nonatomic, strong) MBCustomProgressView *pieView;
 
-@property (nonatomic,copy) mb_moviePlayComplateBlock moviePlayComplate;
+@property (nonatomic, copy) mb_moviePlayComplateBlock moviePlayComplate;
 
-@property (nonatomic,copy) mb_moviePlayEnterBtnClickBlock enterBtnClickBlock;
+@property (nonatomic, copy) mb_moviePlayEnterBtnClickBlock enterBtnClickBlock;
+
+@property (nonatomic, copy) mb_imageLaunghCountDownBlock imageLaunghCountDowBlock;
 
 @end
 
 @implementation MBFullScreenLaunghViewController
-
+- (void)dealloc {
+    dispatch_source_cancel(_timer);
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -63,11 +69,11 @@
             [self setupMoviePlayerView];
             break;
         case MBFullScreenLaunghStyleImage:
+//            [self setupImagesLaunghView];
+//            break;
+        case MBFullScreenLaunghStyleGif:
             [self setupImagesLaunghView];
             break;
-        case MBFullScreenLaunghStyleGif:
-            break;
-            
         default:
             break;
     }
@@ -164,6 +170,10 @@
     self.enterBtnClickBlock = block;
 }
 
+- (void)mb_imageLaunghCountDown:(mb_imageLaunghCountDownBlock)block {
+    self.imageLaunghCountDowBlock = block;
+}
+
 - (void)setFrontViewController:(UIViewController *)frontViewController {
     _frontViewController = frontViewController;
     if (frontViewController) {
@@ -174,11 +184,17 @@
     }
 }
 
-- (void)setImageArray:(NSArray<MBImageObject *> *)imageArray {
-    _imageArray = imageArray;
-    NSAssert(imageArray && imageArray.count > 0, @"传入的视频连接为空");
+//- (void)setImageArray:(NSArray<MBImageObject *> *)imageArray {
+//    _imageArray = imageArray;
+//    NSAssert(imageArray && imageArray.count > 0, @"传入的视频连接为空");
+//
+//    self.imageLaunghViewController.imageArray = imageArray;
+//}
 
-    self.imageLaunghViewController.imageArray = imageArray;
+- (void)setImageObject:(MBImageObject *)imageObject {
+    _imageObject = imageObject;
+    NSAssert(imageObject && (imageObject.localImage || imageObject.localImagePath.length > 0 || imageObject.imageUrl || imageObject.gifUrl || imageObject.localGifData), @"传入的图片对象为空");
+    self.imageLaunghViewController.imageObject = imageObject;
 }
 
 - (void)setVideoUrl:(NSURL *)videoUrl {
@@ -210,33 +226,31 @@
     _countDownTime = countDownTime;
     _cardinalNumber = 100.0 / countDownTime;
     self.pieView.totalTime = countDownTime;
-    [self countDownWithTime:countDownTime countDownBlock:nil endBlock:nil];
+    [self countDownWithTime:countDownTime];
 }
 
-- (void)countDownWithTime:(NSUInteger)time
-           countDownBlock:(void (^)(NSUInteger timeLeft))countDownBlock
-                 endBlock:(void (^)())endBlock {
+- (void)countDownWithTime:(NSUInteger)time {
     
     __weak typeof(self)weakSelf = self;
     __block NSUInteger timeout = time; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
     dispatch_source_set_event_handler(_timer, ^{
         if(timeout <= 0){ //倒计时结束，关闭
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (endBlock) {
-                    endBlock();
-                }
+                [weakSelf countDownFinish];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 timeout--;
                 weakSelf.pieView.totalTime = timeout;
                 [weakSelf changeProgress:_cardinalNumber];
-                if (countDownBlock) {
-                    countDownBlock(timeout);
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(mb_fullScreenLaunghViewController:imageLaunghCountDown:currentTime:)]) {
+                    [weakSelf.delegate mb_fullScreenLaunghViewController:weakSelf imageLaunghCountDown:weakSelf.imageLaunghViewController currentTime:timeout + 1];
+                } else if (weakSelf.imageLaunghCountDowBlock) {
+                    weakSelf.imageLaunghCountDowBlock(weakSelf, weakSelf.imageLaunghViewController, timeout + 1, NO);
                 }
             });
         }
@@ -254,6 +268,36 @@
     }
 //    self.pieView.text = [NSString stringWithFormat:@"%@", @(self.progressView.progress)];
     [self.pieView setProgress:self.pieView.progress animated:YES duration:0.5];
+}
+
+- (void)countDownFinish {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mb_fullScreenLaunghViewController:imageLaunghComplate:)]) {
+        [self.delegate mb_fullScreenLaunghViewController:self imageLaunghComplate:self.imageLaunghViewController];
+    } else if (self.imageLaunghCountDowBlock) {
+        self.imageLaunghCountDowBlock(self, self.imageLaunghViewController, 0, YES);
+    }
+    
+    if (self.transmitAnimation) {
+        NSAssert(self.appRootViewController, @"传入app的正式根控制器");
+
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        window.rootViewController = self.appRootViewController;
+        UIViewController *rootViewController = window.rootViewController;
+        [rootViewController.view addSubview:self.view];
+        rootViewController.view.alpha = 0.5;
+        [UIView animateWithDuration:1.0 animations:^{
+            self.view.alpha = 0.0;
+            
+            [UIView animateWithDuration:1.0 animations:^{
+                rootViewController.view.alpha = 1;
+            }];
+            
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self.view removeFromSuperview];
+            }
+        }];
+    }
 }
 
 - (void)enterRootViewController:(UIButton *)btn {
@@ -274,7 +318,11 @@
 - (void)transmitAnimationFunc {
     
     if (self.transmitAnimation) {
-        UIViewController *rootViewController = [[UIApplication sharedApplication].delegate window].rootViewController;
+        NSAssert(self.appRootViewController, @"传入app的正式根控制器");
+
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        window.rootViewController = self.appRootViewController;
+        UIViewController *rootViewController = window.rootViewController;
         [rootViewController.view addSubview:self.view];
         rootViewController.view.alpha = 0.5;
         [UIView animateWithDuration:1.0 animations:^{

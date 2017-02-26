@@ -22,13 +22,22 @@
     // Override point for customization after application launch.
     
     self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleImage];
+//    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleGif];
     
     MBImageObject *obj = [[MBImageObject alloc] init];
-    obj.localImage = [UIImage imageNamed:@"1111.jpeg"];
+//    obj.localImage = [UIImage imageNamed:@"1111.jpeg"];
+//    obj.localImagePath = [[NSBundle mainBundle] pathForResource:@"1111.jpeg" ofType:nil];
+    obj.imageUrl = [NSURL URLWithString:@"http://imgsrc.baidu.com/forum/w%3D580/sign=e285eb946259252da3171d0c049a032c/3d998801a18b87d61c03a291050828381e30fd04.jpg"];
+//    obj.gifUrl = [NSURL URLWithString:@"http://img2.imgtn.bdimg.com/it/u=3366350805,2146995399&fm=23&gp=0.jpg"];
     
-    self.mb.imageArray = @[obj];
+//    self.mb.imageArray = @[obj];
+    self.mb.imageObject = obj;
     
     self.mb.countDownTime = 10;
+    
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    self.mb.appRootViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
     
 //    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
 //    self.mb.delegate = self;

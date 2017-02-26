@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8952AE9C1E629EA900F332A7 /* mb_laungh_placeholder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */; };
 		8975831A1E61DD990000CB10 /* MBImagesLaunghViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */; };
 		8975831D1E61DF740000CB10 /* MBImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8975831C1E61DF740000CB10 /* MBImageObject.m */; };
 		897583231E61F0840000CB10 /* MBCustomProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 897583221E61F0840000CB10 /* MBCustomProgressView.m */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mb_laungh_placeholder.jpeg; sourceTree = "<group>"; };
 		897583181E61DD990000CB10 /* MBImagesLaunghViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBImagesLaunghViewController.h; sourceTree = "<group>"; };
 		897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBImagesLaunghViewController.m; sourceTree = "<group>"; };
 		8975831B1E61DF740000CB10 /* MBImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBImageObject.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				89EFD10E1E5FCEF900607373 /* ViewController.h */,
 				89EFD10F1E5FCEF900607373 /* ViewController.m */,
 				89EFD1111E5FCEF900607373 /* Main.storyboard */,
+				8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */,
 				89EFD1241E60026400607373 /* 1111.jpeg */,
 				89EFD1141E5FCEF900607373 /* Assets.xcassets */,
 				89EFD1161E5FCEF900607373 /* LaunchScreen.storyboard */,
@@ -174,6 +177,7 @@
 				89EFD1151E5FCEF900607373 /* Assets.xcassets in Resources */,
 				89EFD1131E5FCEF900607373 /* Main.storyboard in Resources */,
 				89EFD1231E5FD47B00607373 /* video.mp4 in Resources */,
+				8952AE9C1E629EA900F332A7 /* mb_laungh_placeholder.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

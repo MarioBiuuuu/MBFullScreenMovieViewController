@@ -16,4 +16,6 @@
  */
 @property (nonatomic, strong) NSArray<MBImageObject *> *imageArray;
 
+@property (nonatomic, strong) MBImageObject *imageObject;
+
 @end

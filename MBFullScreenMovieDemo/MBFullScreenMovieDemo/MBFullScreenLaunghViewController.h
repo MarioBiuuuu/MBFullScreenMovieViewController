@@ -22,12 +22,14 @@ typedef NS_ENUM(NSInteger, MBFullScreenLaunghStyle) {
 typedef void(^mb_moviePlayComplateBlock)(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval);
 typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
 
+typedef void(^mb_imageLaunghCountDownBlock)(MBFullScreenLaunghViewController *viewController, MBImagesLaunghViewController *imageLaunghViewController, NSUInteger currentTime, BOOL isFinished);
+
 @protocol MBFullScreenMovieViewControllerDelegate <NSObject>
 
 @optional
 
 /**
- 播放结束回调
+ 播放视频结束回调
 
  @param viewController 当前对象
  @param playerViewController 视频播放
@@ -43,14 +45,35 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  */
 - (void)mb_movieViewController:(MBFullScreenLaunghViewController *)viewController enterBtnClick:(UIButton *)enterBtn;
 
+/**
+ 图片倒计时结束回调
+
+ @param viewController 当前控制器
+ @param imageLaunghViewController 图片视图
+ */
+- (void)mb_fullScreenLaunghViewController:(MBFullScreenLaunghViewController *)viewController imageLaunghComplate:(MBImagesLaunghViewController *)imageLaunghViewController;
+
+/**
+ 图片倒计时回调
+ 
+ @param viewController 当前控制器
+ @param imageLaunghViewController 图片视图
+ */
+- (void)mb_fullScreenLaunghViewController:(MBFullScreenLaunghViewController *)viewController imageLaunghCountDown:(MBImagesLaunghViewController *)imageLaunghViewController currentTime:(NSUInteger)currentTime;
 @end
 
 @interface MBFullScreenLaunghViewController : UIViewController
 
 /**
+ *  app的正式根式图控制器
+ */
+@property (nonatomic, strong) id appRootViewController;
+
+/**
  *  图片模型数组
  */
-@property (nonatomic, strong) NSArray<MBImageObject *> *imageArray;
+//@property (nonatomic, strong) NSArray<MBImageObject *> *imageArray;
+@property (nonatomic, strong) MBImageObject *imageObject;
 
 /**
  *  图片展示时间
@@ -111,6 +134,12 @@ typedef void(^mb_moviePlayEnterBtnClickBlock)(UIButton *enterBtn);
  */
 - (void)mb_moviePlayEnterBtnClick:(mb_moviePlayEnterBtnClickBlock)block;
 
+/**
+ 图片播放倒计时回调
+
+ @param block block
+ */
+- (void)mb_imageLaunghCountDown:(mb_imageLaunghCountDownBlock)block;
 
 /**
  构造方法
