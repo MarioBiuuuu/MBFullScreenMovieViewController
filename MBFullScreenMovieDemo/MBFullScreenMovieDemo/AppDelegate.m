@@ -56,7 +56,7 @@
     
     self.window.rootViewController = self.mb;
 
-#waring 打开注释查看自定义页面添加
+#warning 打开注释查看自定义页面添加
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
