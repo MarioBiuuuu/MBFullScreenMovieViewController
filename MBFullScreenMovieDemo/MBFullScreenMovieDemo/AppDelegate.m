@@ -39,6 +39,7 @@
     
     self.mb.appRootViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
     
+#warning 打开以下代码 看视频， （注释上面部分）
 //    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
 //    self.mb.delegate = self;
 //    
@@ -55,6 +56,7 @@
     
     self.window.rootViewController = self.mb;
 
+#waring 打开注释查看自定义页面添加
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];

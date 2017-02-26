@@ -95,6 +95,12 @@ App launch video player.
 	
 	self.window.rootViewController = self.mb;
 	```
+	* 自定义视图添加  
 
+	```
+	UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	
+	mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+	```
 
 
