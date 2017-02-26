@@ -76,25 +76,25 @@ App launch video player.
 	```  
 	* 视频  
 	    
-```
-self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
-self.mb.delegate = self;
-    
-[self.mb mb_moviePlayComplate:^(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval) {
-	NSLog(@"block ---> complaet : %@", @(totalInterval));
- }];
-    
-[self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
-	NSLog(@"block ---> enter : %@", enterBtn);
-}];
-self.mb.loopCount = 2;
-self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];  
-
-UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-self.mb.appRootViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];  
-
-self.window.rootViewController = self.mb;
-```
+	```
+	self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
+	self.mb.delegate = self;
+	    
+	[self.mb mb_moviePlayComplate:^(MBMoviePlayerViewController *playerViewController, NSTimeInterval totalInterval) {
+		NSLog(@"block ---> complaet : %@", @(totalInterval));
+	 }];
+	    
+	[self.mb mb_moviePlayEnterBtnClick:^(UIButton *enterBtn) {
+		NSLog(@"block ---> enter : %@", enterBtn);
+	}];
+	self.mb.loopCount = 2;
+	self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];  
+	
+	UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	self.mb.appRootViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];  
+	
+	self.window.rootViewController = self.mb;
+	```
 
 
 
