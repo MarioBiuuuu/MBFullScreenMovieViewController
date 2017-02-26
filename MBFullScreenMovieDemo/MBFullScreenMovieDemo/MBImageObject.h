@@ -20,5 +20,4 @@
 @property (nonatomic, strong) NSData *localGifData;
 
 @property (nonatomic, strong) NSURL *gifUrl;
-
 @end
