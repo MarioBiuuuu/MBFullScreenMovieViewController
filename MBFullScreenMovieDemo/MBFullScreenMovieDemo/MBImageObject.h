@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) NSURL *imageUrl;
 
-@property (nonatomic, strong) NSData *localGifData;
+@property (nonatomic, strong) NSURL *localGifUrl;
 
 @property (nonatomic, strong) NSURL *gifUrl;
 @end

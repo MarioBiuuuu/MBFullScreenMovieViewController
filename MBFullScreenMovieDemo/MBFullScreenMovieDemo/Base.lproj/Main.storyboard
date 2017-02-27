@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1111.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="icw-OK-5gC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mb_laungh_placeholder.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="icw-OK-5gC">
                                 <rect key="frame" x="61" y="322" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1111.jpeg" width="284" height="177"/>
+        <image name="mb_laungh_placeholder.jpeg" width="640" height="1136"/>
     </resources>
 </document>

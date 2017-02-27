@@ -95,6 +95,16 @@ App launch video player.
 	
 	self.window.rootViewController = self.mb;
 	```
+	* Gif
+	使用方式同图片, 需设置对应的gif路径:
+
+    ```
+    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleGif];
+    obj.gifUrl = [NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488169434327&di=d2e31e662ac562585d602302ee26f3f4&imgtype=0&src=http%3A%2F%2Fwww.365take.com%2Fupload%2Fimg%2F99CI1ocbw4Ww3hfPpivZNpvyLoIHtOcG-y00VX4CEVZFSZW9biQqZFeSOJrB9CT%2FNfWXCgWSnsBhW114zlJjUdp4%2FS2ZsA.jpg"];  
+    
+    obj.localGifUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"timg" ofType:@"gif"]];
+    ```
+
 	* 自定义视图添加  
 
 	```
@@ -102,5 +112,6 @@ App launch video player.
 	
 	mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
 	```
+
 
 

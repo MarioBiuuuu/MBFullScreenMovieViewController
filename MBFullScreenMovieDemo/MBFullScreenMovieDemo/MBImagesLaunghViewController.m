@@ -8,6 +8,7 @@
 
 #import "MBImagesLaunghViewController.h"
 #import "MBImageObject.h"
+#import "UIImageView+Gif.h"
 
 @interface MBImagesLaunghViewController ()
 
@@ -39,8 +40,10 @@
 
 - (UIWebView *)webView {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+        _webView = [[UIWebView alloc] init];
+        _webView.frame = self.view.frame;
         _webView.userInteractionEnabled = NO;
+        _webView.scalesPageToFit = YES;
     }
     return _webView;
 }
@@ -50,24 +53,28 @@
 }
 
 - (void)setImageObject:(MBImageObject *)imageObject {
-    if (imageObject.localGifData) {
-        [self.view addSubview:self.webView];
+    if (imageObject.localGifUrl) {
+//        [self.view addSubview:self.webView];
 //        [self.webView loadData:imageObject.localGifData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+        [self.view addSubview:self.imageView];
 
+        [self.imageView mb_setImage:imageObject.localGifUrl];
     } else if (imageObject.gifUrl) {
-        [self.view addSubview:self.webView];
+        [self.view addSubview:self.imageView];
 
         UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"mb_laungh_placeholder.jpeg" ofType:nil]];
         
         self.imageView.image = image;
-        
+
+        [self.imageView mb_setImage:imageObject.gifUrl];
+
 //        __weak typeof(self)weakSelf = self;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            NSData *imageData = [NSData dataWithContentsOfURL:[imageObject gifUrl]];
 //            dispatch_async(dispatch_get_main_queue(), ^{
 //                [weakSelf.webView loadData:imageData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
 //            });
-        });
+//        });
         
     } else if ([imageObject localImagePath]) {
         [self.view addSubview:self.imageView];

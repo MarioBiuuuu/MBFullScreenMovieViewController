@@ -193,7 +193,7 @@
 
 - (void)setImageObject:(MBImageObject *)imageObject {
     _imageObject = imageObject;
-    NSAssert(imageObject && (imageObject.localImage || imageObject.localImagePath.length > 0 || imageObject.imageUrl || imageObject.gifUrl || imageObject.localGifData), @"传入的图片对象为空");
+    NSAssert(imageObject && (imageObject.localImage || imageObject.localImagePath.length > 0 || imageObject.imageUrl || imageObject.gifUrl || imageObject.localGifUrl), @"传入的图片对象为空");
     self.imageLaunghViewController.imageObject = imageObject;
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8917767D1E63BAD30060A8C8 /* timg.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8917767C1E63BAD30060A8C8 /* timg.gif */; };
+		891776831E63BEAA0060A8C8 /* UIImageView+Gif.m in Sources */ = {isa = PBXBuildFile; fileRef = 891776821E63BEAA0060A8C8 /* UIImageView+Gif.m */; };
 		8952AE9C1E629EA900F332A7 /* mb_laungh_placeholder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */; };
 		8975831A1E61DD990000CB10 /* MBImagesLaunghViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */; };
 		8975831D1E61DF740000CB10 /* MBImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8975831C1E61DF740000CB10 /* MBImageObject.m */; };
@@ -19,11 +21,13 @@
 		89EFD1181E5FCEF900607373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1161E5FCEF900607373 /* LaunchScreen.storyboard */; };
 		89EFD1211E5FCF2000607373 /* MBFullScreenLaunghViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */; };
 		89EFD1231E5FD47B00607373 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1221E5FD47B00607373 /* video.mp4 */; };
-		89EFD1251E60026400607373 /* 1111.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 89EFD1241E60026400607373 /* 1111.jpeg */; };
 		89EFD1281E60315E00607373 /* MBMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8917767C1E63BAD30060A8C8 /* timg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg.gif; sourceTree = "<group>"; };
+		891776811E63BEAA0060A8C8 /* UIImageView+Gif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Gif.h"; sourceTree = "<group>"; };
+		891776821E63BEAA0060A8C8 /* UIImageView+Gif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Gif.m"; sourceTree = "<group>"; };
 		8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mb_laungh_placeholder.jpeg; sourceTree = "<group>"; };
 		897583181E61DD990000CB10 /* MBImagesLaunghViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBImagesLaunghViewController.h; sourceTree = "<group>"; };
 		897583191E61DD990000CB10 /* MBImagesLaunghViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBImagesLaunghViewController.m; sourceTree = "<group>"; };
@@ -44,7 +48,6 @@
 		89EFD11F1E5FCF2000607373 /* MBFullScreenLaunghViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBFullScreenLaunghViewController.h; sourceTree = "<group>"; };
 		89EFD1201E5FCF2000607373 /* MBFullScreenLaunghViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBFullScreenLaunghViewController.m; sourceTree = "<group>"; };
 		89EFD1221E5FD47B00607373 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
-		89EFD1241E60026400607373 /* 1111.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1111.jpeg; sourceTree = "<group>"; };
 		89EFD1261E60315E00607373 /* MBMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBMoviePlayerViewController.h; sourceTree = "<group>"; };
 		89EFD1271E60315E00607373 /* MBMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBMoviePlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				89EFD1221E5FD47B00607373 /* video.mp4 */,
+				8917767C1E63BAD30060A8C8 /* timg.gif */,
 				89EFD10B1E5FCEF900607373 /* AppDelegate.h */,
 				89EFD10C1E5FCEF900607373 /* AppDelegate.m */,
 				89EFD11F1E5FCF2000607373 /* MBFullScreenLaunghViewController.h */,
@@ -92,11 +96,12 @@
 				8975831C1E61DF740000CB10 /* MBImageObject.m */,
 				897583211E61F0840000CB10 /* MBCustomProgressView.h */,
 				897583221E61F0840000CB10 /* MBCustomProgressView.m */,
+				891776811E63BEAA0060A8C8 /* UIImageView+Gif.h */,
+				891776821E63BEAA0060A8C8 /* UIImageView+Gif.m */,
 				89EFD10E1E5FCEF900607373 /* ViewController.h */,
 				89EFD10F1E5FCEF900607373 /* ViewController.m */,
 				89EFD1111E5FCEF900607373 /* Main.storyboard */,
 				8952AE9B1E629EA900F332A7 /* mb_laungh_placeholder.jpeg */,
-				89EFD1241E60026400607373 /* 1111.jpeg */,
 				89EFD1141E5FCEF900607373 /* Assets.xcassets */,
 				89EFD1161E5FCEF900607373 /* LaunchScreen.storyboard */,
 				89EFD1191E5FCEF900607373 /* Info.plist */,
@@ -173,9 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				89EFD1181E5FCEF900607373 /* LaunchScreen.storyboard in Resources */,
-				89EFD1251E60026400607373 /* 1111.jpeg in Resources */,
 				89EFD1151E5FCEF900607373 /* Assets.xcassets in Resources */,
 				89EFD1131E5FCEF900607373 /* Main.storyboard in Resources */,
+				8917767D1E63BAD30060A8C8 /* timg.gif in Resources */,
 				89EFD1231E5FD47B00607373 /* video.mp4 in Resources */,
 				8952AE9C1E629EA900F332A7 /* mb_laungh_placeholder.jpeg in Resources */,
 			);
@@ -195,6 +200,7 @@
 				89EFD10A1E5FCEF900607373 /* main.m in Sources */,
 				8975831D1E61DF740000CB10 /* MBImageObject.m in Sources */,
 				89EFD1281E60315E00607373 /* MBMoviePlayerViewController.m in Sources */,
+				891776831E63BEAA0060A8C8 /* UIImageView+Gif.m in Sources */,
 				89EFD1211E5FCF2000607373 /* MBFullScreenLaunghViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
