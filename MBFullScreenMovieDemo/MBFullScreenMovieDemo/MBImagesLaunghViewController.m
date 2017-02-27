@@ -52,7 +52,7 @@
 - (void)setImageObject:(MBImageObject *)imageObject {
     if (imageObject.localGifData) {
         [self.view addSubview:self.webView];
-        [self.webView loadData:imageObject.localGifData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+//        [self.webView loadData:imageObject.localGifData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
 
     } else if (imageObject.gifUrl) {
         [self.view addSubview:self.webView];
@@ -61,12 +61,12 @@
         
         self.imageView.image = image;
         
-        __weak typeof(self)weakSelf = self;
+//        __weak typeof(self)weakSelf = self;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *imageData = [NSData dataWithContentsOfURL:[imageObject gifUrl]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.webView loadData:imageData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
-            });
+//            NSData *imageData = [NSData dataWithContentsOfURL:[imageObject gifUrl]];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [weakSelf.webView loadData:imageData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+//            });
         });
         
     } else if ([imageObject localImagePath]) {

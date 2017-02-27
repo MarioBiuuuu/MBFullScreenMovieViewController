@@ -23,7 +23,8 @@
     
 //    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleImage];
 ////    self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleGif];
-//    
+//    self.mb.delegate = self;
+//
 //    MBImageObject *obj = [[MBImageObject alloc] init];
 ////    obj.localImage = [UIImage imageNamed:@"1111.jpeg"];
 ////    obj.localImagePath = [[NSBundle mainBundle] pathForResource:@"1111.jpeg" ofType:nil];
@@ -34,7 +35,8 @@
 //    self.mb.imageObject = obj;
 //    
 //    self.mb.countDownTime = 10;
-//    
+    
+//
     
 #warning 打开以下代码 看视频， （注释上面部分）
     self.mb = [[MBFullScreenLaunghViewController alloc] initWithLaunghStyle:MBFullScreenLaunghStyleMovie];
@@ -51,13 +53,14 @@
 
     self.mb.videoUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4"ofType:nil]];
     
-    self.window.rootViewController = self.mb;
 
 #warning 打开注释查看自定义页面添加
 //    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    
 //    mb.frontViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
     
+    self.window.rootViewController = self.mb;
+
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     self.mb.appRootViewController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
